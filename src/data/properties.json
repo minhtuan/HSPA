@@ -1,26 +1,42 @@
 [
   {
     "Id" : 1,
+    "SellRent" : 1,
     "Type" : "House",
     "Name" : "House",
-    "Price" : 12000
+    "Price" : 12000,
+    "Image" : "village-1.jpeg"
   },
   {
     "Id" : 2,
+    "SellRent" : 2,
     "Type" : "House",
     "Name" : "Villa",
-    "Price" : 12500
+    "Price" : 12500,
+    "Image" : "village-2.jpeg"
   },
   {
     "Id" : 3,
+    "SellRent" : 1,
     "Type" : "House",
     "Name" : "House 3",
-    "Price" : 14300
+    "Price" : 14300,
+    "Image" : "village-3.jpeg"
   },
   {
     "Id" : 4,
+    "SellRent" : 2,
     "Type" : "House",
     "Name" : "House 4",
-    "Price" : 18000
+    "Price" : 18000,
+    "Image" : "village-4.jpeg"
+  },
+  {
+    "Id" : 5,
+    "SellRent" : 1,
+    "Type" : "House",
+    "Name" : "House 4",
+    "Price" : 18000,
+    "Image" : ""
   }
 ]
