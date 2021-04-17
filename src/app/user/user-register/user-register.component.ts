@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/model/user';
+import { AlertifyService } from 'src/app/services/alertify.service';
 import { UserService } from 'src/app/services/user.service';
 
 // type ValidationErrors = {
@@ -18,7 +19,7 @@ export class UserRegisterComponent implements OnInit {
   user: User;
   userSubmitted: boolean;
 
-  constructor(private fb: FormBuilder, private userService: UserService) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private alertify: AlertifyService) { }
 
   ngOnInit() {
     // this.registerationForm = new FormGroup({
@@ -85,6 +86,10 @@ export class UserRegisterComponent implements OnInit {
       //reset register form
       this.registerationForm.reset();
       this.userSubmitted = false;
+      //
+      this.alertify.success("Congrats, you are success");
+    } else {
+      this.alertify.error("Kindly provide the required fields");
     }
 
   }
