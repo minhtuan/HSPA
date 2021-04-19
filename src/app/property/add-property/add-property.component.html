@@ -1,40 +1,47 @@
 <div class="card">
   <div class="card-header">
-    Add New Property
+    List Your Property
   </div>
   <!-- https://angular.io/guide/form-validation -->
   <!-- <form (ngSubmit)='onSubmit(Form)' #Form="ngForm"> -->
   <form (ngSubmit)='onSubmit()' #Form="ngForm">
     <div class="card-body">
+      <div>
+        <tabset>
+          <tab heading="Basic Info" id="tab1">
+            <div class="form-group col-12">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" #propName="ngModel" ngModel name="Name" required minlength="4">
+              <span *ngIf="!propName.valid && propName.touched" class="error-block">
+                <span *ngIf="propName.errors.required">
+                  Name is required.
+                </span>
+                <span *ngIf="propName.errors.minlength">
+                  Name must be at least 4 characters long.
+                </span>
+              </span>
+            </div>
 
-        <div class="form-group col-12">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" #propName="ngModel"
-              ngModel name="Name" required minlength="4">
-          <span *ngIf="!propName.valid && propName.touched" class="error-block">
-            <span *ngIf="propName.errors.required">
-              Name is required.
-            </span>
-            <span *ngIf="propName.errors.minlength">
-              Name must be at least 4 characters long.
-            </span>
-          </span>
-        </div>
+            <div class="form-group col-12">
+              <label for="type">Type</label>
+              <input type="text" class="form-control" ngModel name="Type">
+            </div>
 
-        <div class="form-group col-12">
-          <label for="type">Type</label>
-          <input type="text" class="form-control" ngModel name="Type">
-        </div>
-
-        <div class="form-group col-12">
-          <label for="price">Price</label>
-          <input type="text" class="form-control" ngModel name="Price">
-        </div>
-    </div>
-    <div class="card-footer">
-      <button [disabled]="!Form.valid" type="submit" class="btn btn-primary mr-2">Save</button>
-      &nbsp;
-      <button type="resut" class="btn btn-warning">Cancel</button>
+            <div class="form-group col-12">
+              <label for="price">Price</label>
+              <input type="text" class="form-control" ngModel name="Price">
+            </div>
+            <div class="form-group col-12 mt-2">
+              <!-- <button [disabled]="!Form.valid" type="submit" class="btn btn-primary mr-2">Save</button> -->
+              <button type="button" class="btn btn-primary btn-block">Next</button>
+            </div>
+          </tab>
+          <tab heading="Pricing and Area">Pricing Information</tab>
+          <tab heading="Address">Address</tab>
+          <tab heading="Other Details">Other Details</tab>
+          <tab heading="Photos">Upload photos</tab>
+        </tabset>
+      </div>
     </div>
   </form>
 </div>
