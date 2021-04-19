@@ -4,10 +4,12 @@
   </div>
   <!-- https://angular.io/guide/form-validation -->
   <!-- <form (ngSubmit)='onSubmit(Form)' #Form="ngForm"> -->
-  <form (ngSubmit)='onSubmit()' #Form="ngForm">
-    <div class="card-body">
+
+  <div class="card-body">
+    <form (ngSubmit)='onSubmit()' #Form="ngForm">
       <div>
-        <tabset>
+        <tabset #formTabs>
+          <!-- Basic Info -->
           <tab heading="Basic Info" id="tab1">
             <div class="form-group col-12">
               <label for="name">Name</label>
@@ -33,17 +35,122 @@
             </div>
             <div class="form-group col-12 mt-2">
               <!-- <button [disabled]="!Form.valid" type="submit" class="btn btn-primary mr-2">Save</button> -->
-              <button type="button" class="btn btn-primary btn-block">Next</button>
+              <button type="button" class="col-12 btn btn-primary btn-block" (click)="selectTab(1)">Next</button>
             </div>
           </tab>
-          <tab heading="Pricing and Area">Pricing Information</tab>
-          <tab heading="Address">Address</tab>
-          <tab heading="Other Details">Other Details</tab>
-          <tab heading="Photos">Upload photos</tab>
+          <!-- Pricing and Area -->
+          <tab heading="Pricing and Area">
+            <div class="form-group col-12">
+              <label>Price (in USD)</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-12">
+              <label>Security (in USD)</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-12">
+              <label>Maintenance</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-12">
+              <label>Build Area (in Sqr Feet)</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-12">
+              <label>Carpet Area (in Sqr Feet)</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-12">
+              <button type="button" class="col-12 btn btn-primary btn-block mt-2" (click)="selectTab(2)">Next</button>
+              <br>
+              <button type="button" class="col-12 btn btn-primary btn-block mt-2" (click)="selectTab(0)">Back</button>
+            </div>
+
+          </tab>
+          <!-- Address -->
+          <tab heading="Address">
+            <div class="form-group col-12">
+              <label>Floor</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-12">
+              <label>Total Floor</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-12">
+              <label>Address</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-12">
+              <label>Landmark</label>
+              <input type="text" class="form-control">
+            </div>
+
+            <div class="form-group col-12">
+              <button type="button" class="col-12 btn btn-primary btn-block mt-2" (click)="selectTab(3)">Next</button>
+              <br>
+              <button type="button" class="col-12 btn btn-primary btn-block mt-2" (click)="selectTab(1)">Back</button>
+            </div>
+          </tab>
+          <!-- Other Details -->
+          <tab heading="Other Details">
+            <div class="form-group col-12">
+              <label>Ready to Move</label><br/>
+              <input type="radio" id="Yes" value="1" name="RTM">
+              <label class="m-2">Yes</label>
+              <input type="radio" id="No" value="2" name="RTM">
+              <label class="m-2">No</label>
+            </div>
+
+            <div class="form-group col-3">
+              <label>Prossession/Available From</label>
+              <input type="date" class="form-control">
+            </div>
+
+            <div class="form-group col-12">
+              <label>Age of Property</label>
+              <input type="text" class="form-control">
+            </div>
+
+            <div class="form-group col-12">
+              <label>Gated Community</label>
+              <input type="text" class="form-control">
+            </div>
+
+            <div class="form-group col-12">
+              <label>Main Entrance</label>
+              <input type="text" class="form-control">
+            </div>
+
+            <div class="form-group col-12">
+              <label>Description</label>
+              <input type="text" class="form-control" rows="6">
+            </div>
+
+            <div class="form-group col-12">
+              <button type="button" class="col-12 btn btn-primary btn-block mt-2" (click)="selectTab(4)">Next</button>
+              <br>
+              <button type="button" class="col-12 btn btn-primary btn-block mt-2" (click)="selectTab(2)">Back</button>
+            </div>
+          </tab>
+          <!-- Photos -->
+          <tab heading="Photos">
+            <div class="form-group col-12">
+              <div class="photo-control">
+                <button class="mt-3" type="button">Upload</button> <br>
+                This is under construction
+              </div>
+            </div>
+
+            <div class="form-group col-12">
+              <button type="button" class="col-12 btn btn-primary btn-block mt-2" (click)="selectTab(3)">Back</button>
+            </div>
+          </tab>
         </tabset>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
+
 </div>
 <br>
 <p>
