@@ -5,6 +5,7 @@
     "Type" : "House",
     "Name" : "House",
     "Price" : 12000,
+    "City" : "Atlanta",
     "Image" : "village-1.jpeg"
   },
   {
@@ -13,6 +14,7 @@
     "Type" : "House",
     "Name" : "Villa",
     "Price" : 12500,
+    "City" : "New York",
     "Image" : "village-2.jpeg"
   },
   {
@@ -21,6 +23,7 @@
     "Type" : "House",
     "Name" : "House 3",
     "Price" : 14300,
+    "City" : "Ho Chi Minh",
     "Image" : "village-3.jpeg"
   },
   {
@@ -29,6 +32,7 @@
     "Type" : "House",
     "Name" : "House 4",
     "Price" : 18000,
+    "City" : "Ha Noi",
     "Image" : "village-4.jpeg"
   },
   {
@@ -37,6 +41,7 @@
     "Type" : "House",
     "Name" : "House 4",
     "Price" : 18000,
+    "City" : "Da Nang",
     "Image" : ""
   }
 ]
