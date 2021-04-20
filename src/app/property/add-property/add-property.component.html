@@ -11,27 +11,51 @@
         <tabset #formTabs>
           <!-- Basic Info -->
           <tab heading="Basic Info" id="tab1">
+            <!-- https://valor-software.com/ngx-bootstrap/#/buttons#checkbox-reactiveforms -->
+            <div class="form-group col-12 m-2">
+              <p>I want to</p>
+              <div class="btn-group" btnRadioGroup>
+                <label class="btn btn-outline-primary" btnRadio=1 role="button" name="SellRent">Sell</label>
+                <label class="btn btn-outline-primary" btnRadio=2 role="button" name="SellRent">Rent</label>
+              </div>
+            </div>
+
+            <div class="form-group col-12 m-2">
+              <p>BHK</p>
+              <div class="btn-group" btnRadioGroup>
+                <label *ngFor="let bhk of [1,2,3,4]" class="btn btn-outline-primary" [btnRadio]="bhk" tabindex="0"
+                  role="button" name="SellRent">{{bhk}}</label>
+              </div>
+            </div>
+
+            <div class="form-group col-12 m-2">
+              <p>Property Type</p>
+              <div class="btn-group" btnRadioGroup>
+                <label *ngFor="let ptype of propertyTypes" class="btn btn-outline-primary" [btnRadio]="ptype"
+                  tabindex="0" role="button" name="SellRent">{{ptype}}</label>
+              </div>
+            </div>
+
+            <div class="form-group col-12 m-2">
+              <p>Furnishing Type</p>
+              <div class="btn-group" btnRadioGroup>
+                <label *ngFor="let ftype of furnishTypes" class="btn btn-outline-primary" [btnRadio]="ftype"
+                  tabindex="0" role="button" name="SellRent">{{ftype}}</label>
+              </div>
+            </div>
+
             <div class="form-group col-12">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" #propName="ngModel" ngModel name="Name" required minlength="4">
+              <label for="name">in Building/Society/Project</label>
+              <input type="text" class="form-control" #propName="ngModel" ngModel name="Name" required minlength="5">
               <span *ngIf="!propName.valid && propName.touched" class="error-block">
-                <span *ngIf="propName.errors.required">
-                  Name is required.
-                </span>
-                <span *ngIf="propName.errors.minlength">
-                  Name must be at least 4 characters long.
-                </span>
+                <span *ngIf="propName.errors.required">Name is required.</span>
+                <span *ngIf="propName.errors.minlength">Name must be at least 5 characters long.</span>
               </span>
             </div>
 
             <div class="form-group col-12">
-              <label for="type">Type</label>
-              <input type="text" class="form-control" ngModel name="Type">
-            </div>
-
-            <div class="form-group col-12">
-              <label for="price">Price</label>
-              <input type="text" class="form-control" ngModel name="Price">
+              <label for="price">City</label>
+              <input type="text" class="form-control">
             </div>
             <div class="form-group col-12 mt-2">
               <!-- <button [disabled]="!Form.valid" type="submit" class="btn btn-primary mr-2">Save</button> -->
@@ -94,35 +118,39 @@
           </tab>
           <!-- Other Details -->
           <tab heading="Other Details">
-            <div class="form-group col-12">
-              <label>Ready to Move</label><br/>
+            <div class="form-group col-12 m-2">
+              <label>Ready to Move</label><br />
               <input type="radio" id="Yes" value="1" name="RTM">
               <label class="m-2">Yes</label>
               <input type="radio" id="No" value="2" name="RTM">
               <label class="m-2">No</label>
             </div>
 
-            <div class="form-group col-3">
+            <!-- https://valor-software.com/ngx-bootstrap/#/datepicker#themes -->
+            <div class="form-group col-3 m-2">
               <label>Prossession/Available From</label>
-              <input type="date" class="form-control">
+              <input type="text" placeholder="Datepicker" 
+                class="form-control" 
+                bsDatepicker
+                [bsConfig]="{containerClass: 'theme-dark-blue', dateInputFormat: 'DD-MM-YYYY'}">
             </div>
 
-            <div class="form-group col-12">
+            <div class="form-group col-12 m-2">
               <label>Age of Property</label>
               <input type="text" class="form-control">
             </div>
 
-            <div class="form-group col-12">
+            <div class="form-group col-12 m-2">
               <label>Gated Community</label>
               <input type="text" class="form-control">
             </div>
 
-            <div class="form-group col-12">
+            <div class="form-group col-12 m-2">
               <label>Main Entrance</label>
               <input type="text" class="form-control">
             </div>
 
-            <div class="form-group col-12">
+            <div class="form-group col-12 m-2">
               <label>Description</label>
               <input type="text" class="form-control" rows="6">
             </div>
@@ -144,6 +172,8 @@
 
             <div class="form-group col-12">
               <button type="button" class="col-12 btn btn-primary btn-block mt-2" (click)="selectTab(3)">Back</button>
+              <button type="reset" class="col-12 btn btn-primary btn-block mt-2">Cancel</button>
+              <button type="submit" class="col-12 btn btn-primary btn-block mt-2">Save</button>
             </div>
           </tab>
         </tabset>
