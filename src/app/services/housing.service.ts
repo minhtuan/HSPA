@@ -19,6 +19,15 @@ export class HousingService {
     return this.httpClient.get('data/properties.json').pipe(
       map(data => {
         const propertiesArray: Array<IPropertyBase> = [];
+        const localProperties = JSON.parse(localStorage.getItem('newProp'));
+
+        if(localProperties){
+          for(const id in localProperties){
+            if(localProperties.hasOwnProperty(id) && localProperties[id].SellRent === SellRent){
+              propertiesArray.push(localProperties[id]);
+            }
+          }
+        }
 
         for(const id in data){
           if(data.hasOwnProperty(id) && data[id].SellRent === SellRent){
@@ -32,7 +41,14 @@ export class HousingService {
   }
 
   addProperty(property: Property){
-    localStorage.setItem('newProp', JSON.stringify(property));
+    let newProp = [property];
+
+    // Add new property in array if newProp already exit
+    if(localStorage.getItem('newProp')){
+      newProp = [property, ...JSON.parse(localStorage.getItem('newProp'))];
+    }
+
+    localStorage.setItem('newProp', JSON.stringify(newProp));
   }
 
   newPropID() {
