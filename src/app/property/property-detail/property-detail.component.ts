@@ -19,8 +19,14 @@ export class PropertyDetailComponent implements OnInit {
   ngOnInit() {
     // this.propertyId = Number(this.route.snapshot.params['id']);
     this.propertyId = + this.route.snapshot.params['id'];
+    this.route.data.subscribe(
+      (data: Property) => {
+        this.property = data['prp'];
+      }
+    );
 
     //== update parameters URL ==
+    /*
     this.route.params.subscribe(
       (params) => {
         this.propertyId = + params['id'];
@@ -32,10 +38,10 @@ export class PropertyDetailComponent implements OnInit {
           // }
           (data: Property) => {
             this.property = data;
-          }
+          }, error => this.router.navigate(['/'])
         );
       }
-    );
+    );*/
   }
 
   /*

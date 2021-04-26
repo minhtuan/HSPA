@@ -17,16 +17,17 @@ export class HousingService {
   getProperty(id: number){
     return this.getAllProperties().pipe(
       map(propertyArray => {
+        //throw new Error('Some error');
         return propertyArray.find(p => p.Id === id);
       })
     );
   }
 
   // getAllProperties(){
-  getAllProperties(SellRent?: number): Observable<IPropertyBase[]>{
+  getAllProperties(SellRent?: number): Observable<Property[]>{
     return this.httpClient.get('data/properties.json').pipe(
       map(data => {
-        const propertiesArray: Array<IPropertyBase> = [];
+        const propertiesArray: Array<Property> = [];
         const localProperties = JSON.parse(localStorage.getItem('newProp'));
 
         if(localProperties){
@@ -54,6 +55,8 @@ export class HousingService {
         return propertiesArray;
       })
     );
+
+    return this.httpClient.get<Property[]>('data/properties.json');
   }
 
   addProperty(property: Property){
