@@ -12,6 +12,7 @@ import { HousingService } from 'src/app/services/housing.service';
 export class PropertyListComponent implements OnInit {
   SellRent = 1;
   properties: IPropertyBase[];//Array<IPropertyBase>;
+  Today = new Date();
 
   constructor(private route: ActivatedRoute, private housingService: HousingService) { }
 

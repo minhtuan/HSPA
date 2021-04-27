@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Property } from 'src/app/model/property';
 import { HousingService } from 'src/app/services/housing.service';
 
@@ -9,11 +10,18 @@ import { HousingService } from 'src/app/services/housing.service';
 })
 export class PropertyDetailResolverService implements Resolve<Property>{
 
-constructor(private housingService: HousingService) { }
+constructor(private router: Router, private housingService: HousingService) { }
 
-resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Property> | Property {
-  const propId = +route.params['id'];
-  return this.housingService.getProperty(propId);
+resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
+  Observable<Property> | Property 
+{
+  const propId = route.params['id'];
+  return this.housingService.getProperty(+propId).pipe(
+    catchError(error => {
+      this.router.navigate(['/']);
+      return of(null);
+    })
+  );
 }
 
 }

@@ -1,5 +1,13 @@
+<!-- https://angular.io/api/common/DatePipe -->
+<!-- Current Date: {{Today}} <br>
+Current Date (local): {{Today | date:'medium'}}<br>
+Current Date (France): {{Today | date:'medium':'GMT+2'}}<br>
+Current Date (France): {{Today | date:'medium':'GMT+2' | uppercase}}<br> -->
+
+
 <div class="row">
-    <div *ngFor="let item of properties" class="shadow-lg col-sm-4 p-3">
+    <!-- properties|filter:'Ha Noi':'City' -->
+    <div *ngFor="let item of properties|sort:['Price', 'desc']" class="shadow-lg col-sm-4 p-3">
         <!-- <app-property-card property_name="Test 123"></app-property-card> -->
         <app-property-card [property]="item"></app-property-card>
     </div>
