@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "store-vtv"
+  },
+  "targets": {
+    "store-vtv": {
+      "hosting": {
+        "store-app": [
+          "store-vtv"
+        ]
+      }
+    }
+  }
+}

@@ -6,16 +6,20 @@ Current Date (France): {{Today | date:'medium':'GMT+2' | uppercase}}<br> -->
 
 <label>Filter City:</label>
 <input [(ngModel)]='City'>
-<button type="button" (click)="onCityFilter()">Search</button>
-<button type="button" (click)="onCityFilterClear()">Clear</button>
+<button type="button" class="btn btn-sm btn-success m-2"
+  (click)="onCityFilter()"><i class="fa fa-search"></i> Search</button>
+<button type="button" class="btn btn-sm btn-warning"
+  (click)="onCityFilterClear()"> <i class="fa fa-times"></i> Clear</button>
+&nbsp;&nbsp;
 
 <label>Sort by &nbsp;</label>
 <select [(ngModel)] = 'SortbyParam'>
   <option value="City">City</option>
   <option value="Price">Price</option>
 </select>
-
-<button type="button" (click) = "onSortDirection()">
+&nbsp;
+<button type="button" class="btn btn-sm btn-dark"
+  (click)="onSortDirection()">
     <i *ngIf="SortDirection==='asc'" class="fas fa-sort-alpha-down"></i>
     <i *ngIf="SortDirection==='desc'" class="fas fa-sort-alpha-up"></i>
 </button>
