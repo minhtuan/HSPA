@@ -15,7 +15,7 @@
             <tabset class="member-tabset" #formTabs>
               <!-- Basic Info -->
               <!-- ngModelGroup="BasicInfo" #BasicInfo="ngModelGroup" -->
-              <tab heading="Basic Info" formGroupName="BasicInfo">
+              <tab heading="Basic Info" formGroupName="BasicInfo" class="p-2">
                 <!-- https://valor-software.com/ngx-bootstrap/#/buttons#checkbox-reactiveforms -->
                 <div class="form-group col-12 m-2">
                   <p>I want to</p>
@@ -89,8 +89,14 @@
 
                 <div class="form-group col-12 m-2">
                   <label for="price">City</label>
-                  <input type="text" class="form-control" formControlName="City"
+                  <select class="form-control" 
+                    formControlName="City"
                     [(ngModel)]="propertyView.City">
+                      <option value="">-- Select City --</option>
+                      <option *ngFor="let city of cityList" value="{{city}}">
+                        {{city}}
+                      </option>
+                    </select>
                   <!-- <div class="error-block"
                   *ngIf="City.invalid && (nextClicked || City.touched)">
                     Please select city
